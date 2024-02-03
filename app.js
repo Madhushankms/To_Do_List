@@ -2,23 +2,26 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 
+app.set("view engine", "ejs");
+
 app.use(bodyParser.urlencoded({extended:true}));
 
+app.use(express.static("public"))
 
 
- app.get("/",function(req,res){
-    
+ app.get("/",function(req,res){  
     const toDate = new Date();
-
     var option = {
         weekday:"long",
         day:"numeric",
         month:"long"
     }
     var day = toDate.toLocaleDateString("en-US",option); 
-    
-        console.log(day)
+    res.render("index",{
+        datefor:day,
+    })
  });
+
 
 
   
