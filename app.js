@@ -7,7 +7,17 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 
  app.get("/",function(req,res){
-    res.send("Hello..")
+    
+    const toDate = new Date();
+
+    var option = {
+        weekday:"long",
+        day:"numeric",
+        month:"long"
+    }
+    var day = toDate.toLocaleDateString("en-US",option); 
+    
+        console.log(day)
  });
 
 
